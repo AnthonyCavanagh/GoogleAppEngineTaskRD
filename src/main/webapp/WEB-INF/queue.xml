@@ -1,0 +1,25 @@
+<queue-entries>
+    <queue>
+        <name>default</name>
+        <rate>10/s</rate>
+        <mode>push</mode>
+    </queue>
+    <queue>
+        <name>add</name>
+        <mode>pull</mode>
+        <!-- Should set backend host.
+            <target></target>
+        -->
+    </queue>
+    <queue>
+        <name>delete</name>
+        <mode>pull</mode>
+        <!-- Should set backend host.
+            <target></target>
+        -->
+    </queue>
+    <queue>
+        <name>pull</name>
+        <mode>pull</mode>
+    </queue>
+</queue-entries>
