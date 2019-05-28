@@ -5,18 +5,16 @@
         <mode>push</mode>
     </queue>
     <queue>
-        <name>add</name>
+        <name>addFundPull</name>
         <mode>pull</mode>
         <!-- Should set backend host.
             <target></target>
         -->
     </queue>
     <queue>
-        <name>delete</name>
-        <mode>pull</mode>
-        <!-- Should set backend host.
-            <target></target>
-        -->
+        <name>addFundPush</name>
+        <rate>10/s</rate>
+        <mode>push</mode>
     </queue>
     <queue>
         <name>pull</name>

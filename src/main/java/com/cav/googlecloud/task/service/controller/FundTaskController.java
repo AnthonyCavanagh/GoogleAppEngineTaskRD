@@ -20,31 +20,59 @@ public class FundTaskController {
 	private TaskService taskservice;
 	private static final Logger logger = LoggerFactory.getLogger(FundTaskController.class);
 	
-	@RequestMapping(value = "/AddFunds", method = RequestMethod.POST)
+	@RequestMapping(value = "/AddFundsPullParam", method = RequestMethod.POST)
 	public ResponseEntity<Funds>  addFunds(@RequestBody Funds funds) {
 		logger.info("Add Funds to Queue "+funds.toString());
 		taskservice.addFundsParams(funds);
 		return new ResponseEntity<Funds>(funds, HttpStatus.CREATED);
 	}
 	
-	@RequestMapping(value = "/AddFundsPayload", method = RequestMethod.POST)
+	@RequestMapping(value = "/AddFundsPullPayload", method = RequestMethod.POST)
 	public ResponseEntity<Funds>  addFundsPayload(@RequestBody Funds funds) {
 		logger.info("Add Funds to Queue "+funds.toString());
 		taskservice.addFundsPayload(funds);
 		return new ResponseEntity<Funds>(funds, HttpStatus.CREATED);
 	}
 
-	@RequestMapping(value = "/ListFundsParams", method = RequestMethod.POST)
-	public ResponseEntity<Funds>  listFundsParams() {
-		logger.info("Get Funds from Queue ");
-		Funds funds = taskservice.getFundsParms();
+	@RequestMapping(value = "/AddFundsPushParam", method = RequestMethod.POST)
+	public ResponseEntity<Funds>  addFundsPush(@RequestBody Funds funds) {
+		logger.info("Add Funds to Queue "+funds.toString());
+		taskservice.addFundsParamPush(funds);
 		return new ResponseEntity<Funds>(funds, HttpStatus.CREATED);
 	}
 	
-	@RequestMapping(value = "/ListFundsPayload", method = RequestMethod.POST)
+	@RequestMapping(value = "/AddFundsPushPayload", method = RequestMethod.POST)
+	public ResponseEntity<Funds>  addFundsPushPaylosd(@RequestBody Funds funds) {
+		logger.info("Add Funds to Queue "+funds.toString());
+		taskservice.addFundsPayloadPush(funds);
+		return new ResponseEntity<Funds>(funds, HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(value = "/ListFundsPullParams", method = RequestMethod.POST)
+	public ResponseEntity<Funds>  listFundsPullParams() {
+		logger.info("Get Funds from Queue ");
+		Funds funds = taskservice.getFundsParmsPull();
+		return new ResponseEntity<Funds>(funds, HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(value = "/ListFundsPullPayload", method = RequestMethod.POST)
+	public ResponseEntity<Funds>  listFundsPullPayload() {
+		logger.info("Get Funds from Queue ");
+		Funds funds = taskservice.getFundsPayloadPull();
+		return new ResponseEntity<Funds>(funds, HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(value = "/ListFundsPushParams", method = RequestMethod.POST)
+	public ResponseEntity<Funds>  listFundsParams() {
+		logger.info("Get Funds from Queue ");
+		Funds funds = taskservice.getFundsParmsPush();
+		return new ResponseEntity<Funds>(funds, HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(value = "/ListFundsPushPayload", method = RequestMethod.POST)
 	public ResponseEntity<Funds>  listFundsPayload() {
 		logger.info("Get Funds from Queue ");
-		Funds funds = taskservice.getFundsPayload();
+		Funds funds = taskservice.getFundsPayloadPush();
 		return new ResponseEntity<Funds>(funds, HttpStatus.CREATED);
 	}
 }
